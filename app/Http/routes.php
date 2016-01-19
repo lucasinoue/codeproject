@@ -15,11 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//Client
 Route::get('client', 'ClientController@index');
 Route::post('client', 'ClientController@store');
 Route::put('client/{id}', 'ClientController@update');
 Route::get('client/{id}', 'ClientController@show');
 Route::delete('client/{id}', 'ClientController@destroy');
+
+//Project
+Route::get('project', 'ProjectController@index');
+Route::post('project', 'ProjectController@store');
+Route::put('project/{id}', 'ProjectController@update');
+Route::get('project/{id}', 'ProjectController@show');
+Route::delete('project/{id}', 'ProjectController@destroy');
+
+
 
 /*
 |--------------------------------------------------------------------------

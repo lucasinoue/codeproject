@@ -2,13 +2,12 @@
 
 namespace CodeProject\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use CodeProject\Repositories\ClientRepository;
-use CodeProject\Services\ClientService;
+use CodeProject\Repositories\ProjectRepository;
+use CodeProject\Services\ProjectService;
 
 
-class ClientController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +16,13 @@ class ClientController extends Controller
      */
 
     private $repository;
-    private $service;
+    private $service; 
 
-    public function __construct(ClientRepository $repository, ClientService $service) {
+    public function __construct(ProjectRepository $repository, ProjectService $service) {
         $this->repository = $repository;
         $this->service = $service;
     }
+
 
     public function index()
     {
@@ -61,6 +61,7 @@ class ClientController extends Controller
         return $this->repository->find($id);
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -70,7 +71,6 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
         $this->repository->update($request->all(), $id);
         return $this->repository->find($id);
     }
