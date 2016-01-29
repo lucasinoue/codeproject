@@ -15,7 +15,7 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    private $repository;
+    private $repository; 
     private $service; 
 
     public function __construct(ProjectRepository $repository, ProjectService $service) {
@@ -26,7 +26,8 @@ class ProjectController extends Controller
 
     public function index()
     {
-        return $this->repository->all();
+        return $this->repository->with(['owner','client'])->all();
+        //return $this->repository->all();
     }
 
     /**
@@ -58,7 +59,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->find($id);
+        return $this->repository->with(['owner', 'client'])->find($id);
     }
 
 

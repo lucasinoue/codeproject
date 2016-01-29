@@ -9,7 +9,6 @@ class Project extends Model
     //
     protected $fillable = [
 
-		'id',
 		'owner_id', //chave estrangeira para users
 		'client_id', //chave estrangeira para clients
 		'name',
@@ -18,4 +17,19 @@ class Project extends Model
 		'status',
 		'due_date'
 	]; 
+
+	
+	public function notes()
+	{
+		return $this->hasMany(ProjectNote::class);
+	}
+
+	public function client() {
+		return $this->belongsTo(Client::class); 
+	}
+
+	public function owner() {
+		return $this->belongsTo(User::class); 
+	}
+
 }
